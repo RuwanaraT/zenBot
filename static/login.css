@@ -1,0 +1,29 @@
+body {
+
+    font-family: 'Inter', sans-serif;
+}
+
+.navbar {
+
+    background-color: #0b0b45;
+}
+
+.container {
+    position: absolute;
+    top: 25%;
+    bottom: 25%;
+    left: 10%;
+    right: 75%;
+}
+
+#cover {
+
+    background-color: white;
+    width: 35%;
+    height: 91%;
+    top: 2.6%;
+    position: absolute;
+    left: 50%;
+    background-image: url(../static/cover.svg);
+   
+}

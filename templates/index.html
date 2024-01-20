@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zenBot Conversation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/chat.css">
+    <link rel="stylesheet" href="../static/style.css">
+
+    <!------ display shortcut icon ------>
+	<link rel = "shortcut icon" href = "../static/logo.png">
+
+</head>
+<body>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    
+    <script src="../static/script.js"></script>
+    <script src="../static/script2.js"></script>
+
+    <nav class="navbar">
+        <div class="container-fluid">
+          <!-- <a class="navbar-brand" href="#">
+            <img src="logo.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+            zenFlow
+          </a> -->
+          <img src="../static/logo.svg" alt="" width="200" height="50" style="position: relative; left: 45%;">
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" hidden>
+           <!-- <button class="btn btn-outline-primary" type="submit">Register</button> -->
+          </form>
+        </div>
+      </nav>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+      <div class="container mt-5" id="cont">
+
+        <h2>Welcome to the zenBot,</h2>
+
+        {% if current_user %}
+            <h5>Hi, {{ current_user.username }} !</h5>
+        {% endif %}
+
+      </div>
+
+
+    <div class = "container mt-5" style=" width : 40%; justify-content: center;" id="container-1">
+
+        <br>
+        <center>
+        <img src="../static/chatbot.png" alt="bot">
+        <div> <h1> zenBot Emotion Level Result </h1> </div> 
+        <br>
+
+        <!-- <button type="button" class="btn btn-outline-danger btn-lg" onclick="window.location.href='/process'">Start</button> <br> <br>
+
+         <img src="../static/mic.png" alt="mic"> </center>  -->
+
+         <br>
+
+        <table class="table table-danger table-striped table-hover">
+          <thead>
+            <tr>
+              <th scope="col" style="text-align: center;">Emotions</th>
+              <!-- <th scope="col" style="text-align: center;">Precentage</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            {% for emotion, percentage in emotion_percentages.items() %}
+            <tr>
+              <td style="text-align: center;">{{ emotion }}</td>
+              <!-- <td style="text-align: center;">{{ percentage }}%</td> -->
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <br>
+
+        <center> <div> <h1> zenBot Stress Level Clue </h1> </div>  
+
+
+        <br>
+
+
+
+        <h5 style="color: crimson;">{{ statement }}</h5>
+
+        <br>
+
+       </center>
+
+
+       {% if current_user %}
+          <form method="" action="" id="reset-form">
+            <center> <button type="submit" class="btn btn-outline-dark btn-lg" onclick="resetCounselling()">Reset</button> </center> 
+          </form>
+        {% endif %}
+          <br>
+
+    </div>
+
+    <br>
+    
+    <!-- <div class="container mt-5" id="container-2">
+
+        <center> 
+
+            <button type="button" class="btn btn-outline-danger btn-lg" onclick="window.location.href='/process'">Start Conversation</button> <br> <br>
+    
+            <img src="mic.png" alt="mic"> 
+
+        </center> 
+
+    </div> -->
+
+      <div class="container mt-5" id="conversation">
+
+        <br>
+
+        
+
+        <center> 
+
+        {% if current_user %}
+        <button type="button" class="btn btn-info" onclick="startCounselling()">Start Conversation</button> <br> <br>
+        {% endif %}
+
+        <img src="../static/mic.png" alt="mic"> 
+
+        <br>
+
+        <!-- <h3> Conversation: </h3> -->
+        
+            <ul>
+                {% for message in conversation %}
+                
+                    <li>
+                        {% if message.zenBot %}
+                            zenBot : {{ message.zenBot }}
+                        {% elif message.User %}
+                            User: {{ message.User }}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+
+        </center> 
+    </div>
+
+</body>
+</html>
